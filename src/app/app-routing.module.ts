@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+import { MainSplashComponent } from './main-splash/main-splash.component';
+
+const routes: Routes = [
+  { path: '', component: MainSplashComponent }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
