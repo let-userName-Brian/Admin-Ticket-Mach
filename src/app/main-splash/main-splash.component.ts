@@ -7,17 +7,11 @@ import { APICalls } from '../core/services/API.service';
   styleUrls: ['./main-splash.component.scss']
 })
 export class MainSplashComponent implements OnInit {
-  tickets: any = [];
-  constructor(private api: APICalls) { }
 
-  ngOnInit(): void {
-    this.api.getAllTickets().subscribe(
-      data => {
-        this.tickets.push(data);
-      })
-      setTimeout(()=> {
-        console.log(this.tickets);
-      })
+  constructor(private api: APICalls) {
   }
 
+  ngOnInit(): void {
+    this.api.getAllTickets();
+  }
 }
