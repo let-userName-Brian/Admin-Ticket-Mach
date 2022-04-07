@@ -1,12 +1,37 @@
-table {
+//entire table
+.mat-elevation-z8 {
+  margin-left: 1rem;
+  min-width: 45vw !important;
+}
+
+table{
   width: 100%;
 }
 
+//filter container
 .mat-form-field {
   font-size: 14px;
-  width: 100%;
+  width: 50%;
 }
 
-td, th {
-  width: 25%;
+.filter{
+  margin-left: 1rem;
+}
+
+//columns
+td, th{
+  text-align: center;
+  max-width: 100%;
+}
+
+button{
+  cursor: pointer;
+  color: #393939;
+  background-color: #ff3700a6;
+  border-radius: 10px;
+}
+
+button:hover{
+  transform: scale(1.1);
+  box-shadow: 5px 5px 5px #97ABB1;
 }
