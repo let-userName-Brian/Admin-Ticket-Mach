@@ -32,6 +32,13 @@ export class ChartOneComponent implements OnInit, AfterViewInit {
       options: {
         responsive: true,
         maintainAspectRatio: true,
+        plugins: {
+          legend:{
+            labels:{
+              color: '#ffff'
+            }
+          }
+        },
         scales: {
           x: {
             ticks: {

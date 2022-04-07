@@ -48,6 +48,13 @@ export class ChartTwoComponent implements OnInit, AfterViewInit {
       options: {
         responsive: true,
         maintainAspectRatio: true,
+        plugins: {
+          legend:{
+            labels:{
+              color: '#ffff'
+            }
+          }
+        },
         scales: {
           x: {
             ticks: {
