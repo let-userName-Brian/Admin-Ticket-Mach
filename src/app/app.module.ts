@@ -15,7 +15,6 @@ import { MainSplashComponent } from './main-splash/main-splash.component';
 import { DataTableComponent } from './data-table/data-table.component';
 import { ChartOneComponent } from './chart-one/chart-one.component';
 import { ChartTwoComponent } from './chart-two/chart-two.component';
-import { ChartThreeComponent } from './chart-three/chart-three.component';
 
 
 @NgModule({
@@ -25,7 +24,6 @@ import { ChartThreeComponent } from './chart-three/chart-three.component';
     DataTableComponent,
     ChartOneComponent,
     ChartTwoComponent,
-    ChartThreeComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +35,7 @@ import { ChartThreeComponent } from './chart-three/chart-three.component';
     MatTableModule,
     MatPaginatorModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
