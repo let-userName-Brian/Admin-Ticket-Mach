@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import Chart from 'chart.js/auto';
+import { APICalls } from '../core/services/API.service';
 
 @Component({
   selector: 'app-chart-two',
@@ -11,64 +12,73 @@ export class ChartTwoComponent implements OnInit, AfterViewInit {
   ctx: any;
   @ViewChild('myChart') myChart: any;
 
-  constructor() { }
+  constructor(private api: APICalls) { }
 
   ngAfterViewInit(): void {
     this.canvas = this.myChart.nativeElement;
     this.ctx = this.canvas.getContext('2d');
     Chart.defaults.interaction.mode = 'nearest';
     const labels = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-
-    new Chart(this.ctx, {
-      type: 'line',
-      data: {
-        labels: labels,
-        datasets: [{
-          label: 'Defenders',
-          data: [10, 8, 13, 5, 12, 5, 4],
-          fill: false,
-          borderColor: 'rgb(75, 192, 192)',
-          tension: 0.1
+    setTimeout(() => {
+      new Chart(this.ctx, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Defenders',
+            data: [10, 8, 13, 5, 12, 5, 4],
+            fill: false,
+            borderColor: 'rgb(75, 192, 192)',
+            tension: 0.1
+          },
+          {
+            label: 'Customers',
+            data: [
+              this.api.mondayArray?.length,
+              this.api.tuesdayArray?.length,
+              this.api.wednesdayArray?.length,
+              this.api.thursdayArray?.length,
+              this.api.fridayArray?.length,
+              this.api.saturdayArray?.length,
+              this.api.sundayArray?.length
+            ],
+            fill: false,
+            borderColor: 'red',
+            tension: 0.1
+          },
+          {
+            label: 'Minimum Needed',
+            data: [8, 8, 8, 8, 8, 2, 2],
+            fill: false,
+            borderColor: 'green',
+            tension: 0.1
+          }]
         },
-        {
-          label: 'Customers',
-          data: [44, 41, 32, 45, 33, 10, 9],
-          fill: false,
-          borderColor: 'red',
-          tension: 0.1
-        },
-        {
-          label: 'Minimume Needed',
-          data: [8, 8, 8, 8, 8, 2, 2],
-          fill: false,
-          borderColor: 'green',
-          tension: 0.1
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: true,
-        plugins: {
-          legend:{
-            labels:{
-              color: '#ffff'
-            }
-          }
-        },
-        scales: {
-          x: {
-            ticks: {
-              color: '#ffff'
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          plugins: {
+            legend: {
+              labels: {
+                color: '#ffff'
+              }
             }
           },
-          y: {
-            ticks: {
-              color: '#ffff'
+          scales: {
+            x: {
+              ticks: {
+                color: '#ffff'
+              }
+            },
+            y: {
+              ticks: {
+                color: '#ffff'
+              }
             }
           }
         }
-      }
-    })
+      });
+    }, 500);
   }
 
   ngOnInit(): void {

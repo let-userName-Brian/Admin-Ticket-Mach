@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import Chart from 'chart.js/auto';
+import { APICalls } from '../core/services/API.service';
 
 @Component({
   selector: 'app-chart-one',
@@ -11,18 +12,26 @@ export class ChartOneComponent implements OnInit, AfterViewInit {
   ctx: any;
   @ViewChild('myChart') myChart: any;
 
-  constructor() { }
+  constructor(private api: APICalls) { }
 
   ngAfterViewInit(): void {
     this.canvas = this.myChart.nativeElement;
     this.ctx = this.canvas.getContext('2d');
-
+setTimeout(() => {
     new Chart(this.ctx, {
       type: 'bar',
       data: {
         datasets: [{
-          label: '# of Vehicles Searched',
-          data: [44, 41, 32, 45, 33, 10, 9],
+          label: '# of Vehicles Searched (All Time)',
+          data: [
+            this.api.mondayArray?.length,
+            this.api.tuesdayArray?.length,
+            this.api.wednesdayArray?.length,
+            this.api.thursdayArray?.length,
+            this.api.fridayArray?.length,
+            this.api.saturdayArray?.length,
+            this.api.sundayArray?.length
+          ],
           backgroundColor: 'rgb(95,99,175)',
           borderColor: 'rgb(25,167,233)',
           borderWidth: 1
@@ -33,8 +42,8 @@ export class ChartOneComponent implements OnInit, AfterViewInit {
         responsive: true,
         maintainAspectRatio: true,
         plugins: {
-          legend:{
-            labels:{
+          legend: {
+            labels: {
               color: '#ffff'
             }
           }
@@ -53,9 +62,9 @@ export class ChartOneComponent implements OnInit, AfterViewInit {
         }
       }
     });
+  }, 500);
   };
 
   ngOnInit() {
-
   };
 };

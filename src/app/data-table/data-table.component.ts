@@ -14,24 +14,23 @@ import { MatTableDataSource } from '@angular/material/table';
 export class DataTableComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  
+
   dataSource: MatTableDataSource<Ticket[] | any>;
   displayedColumns: string[] = ['date', 'name', 'location', 'vehicle', 'delete'];
   expandedElement: any | null;
-  
+
   constructor(private api: APICalls) {
     this.dataSource = new MatTableDataSource<Ticket[] | any>();
-    this.api.getAllTickets();
   };
 
   ngOnInit(): void {
     this.api.updataedTickets.subscribe(data => {
-      this.dataSource = new MatTableDataSource(data); 
+      this.dataSource = new MatTableDataSource<Ticket[]>(data);
     });
-  };
+  };  
 
   ngAfterViewInit() {
-    setTimeout(() => {this.dataSource.paginator = this.paginator}, 300);
+    setTimeout(() => this.dataSource.paginator = this.paginator, 300);
     this.dataSource.sort = this.sort;
   };
 
@@ -44,8 +43,8 @@ export class DataTableComponent implements OnInit, AfterViewInit {
     };
   };
 
-  deleteTicket(id:string){
+  deleteTicket(id: string) {
     this.api.deleteTicket(id);
-    setTimeout(() => {this.dataSource.paginator = this.paginator}, 500);
+    setTimeout(() => { this.dataSource.paginator = this.paginator }, 500);
   };
 };
