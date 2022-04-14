@@ -26,7 +26,7 @@ export class ChartTwoComponent implements OnInit, AfterViewInit {
           labels: labels,
           datasets: [{
             label: 'Defenders',
-            data: [10, 8, 13, 5, 12, 5, 4],
+            data: [4, 4, 4, 4, 4, 4, 4],
             fill: false,
             borderColor: 'rgb(75, 192, 192)',
             tension: 0.1
@@ -48,7 +48,7 @@ export class ChartTwoComponent implements OnInit, AfterViewInit {
           },
           {
             label: 'Minimum Needed',
-            data: [8, 8, 8, 8, 8, 2, 2],
+            data: [3, 3, 3, 3, 3, 3, 3],
             fill: false,
             borderColor: 'green',
             tension: 0.1

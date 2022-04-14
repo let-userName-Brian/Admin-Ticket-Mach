@@ -41,25 +41,25 @@ export class APICalls {
 
   addTicketsToTheirArrays(day: number) {
     switch (day) {
-      case 0:
+      case 1:
         this.mondayArray.push(day);
         break;
-      case 1:
+      case 2:
         this.tuesdayArray.push(day)
         break;
-      case 2:
+      case 3:
         this.wednesdayArray.push(day)
         break;
-      case 3:
+      case 4:
         this.thursdayArray.push(day)
         break;
-      case 4:
+      case 5:
         this.fridayArray.push(day)
         break;
-      case 5:
+      case 6:
         this.saturdayArray.push(day)
         break;
-      case 6:
+      case 0:
         this.sundayArray.push(day)
         break;
     }
